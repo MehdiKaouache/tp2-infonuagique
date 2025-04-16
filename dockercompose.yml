@@ -1,0 +1,24 @@
+services:
+  backend:
+    image: mehdikaouache/tp2-2387924-2176089-backend:v1
+    build:
+      context: ./backend
+    ports:
+      - "8787:8787"
+    networks:
+      - my-network
+
+  frontend:
+    image: mehdikaouache/tp2-2387924-2176089-frontend:v1
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
